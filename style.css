@@ -1,47 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
+    padding: 0;
 }
 
 header {
-    background-color: #282c34;
+    background-color: #343a40;
     color: white;
     padding: 20px;
-}
-
-main {
-    margin: 20px;
-}
-
-section {
-    background-color: white;
-    padding: 20px;
-    margin: 20px auto;
     border-radius: 10px;
-    max-width: 400px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input, select {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-button:disabled {
-    background-color: #ccc;
+.card-title {
+    font-size: 1.5rem;
+}
+
+.btn {
+    border-radius: 5px;
+}
+
+#wallet-address {
+    color: #17a2b8;
 }
