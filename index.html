@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decentralized Voting System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Decentralized Voting System</h1>
+    </header>
+    <main>
+        <section id="add-candidate">
+            <h2>Add Candidate</h2>
+            <form id="add-candidate-form">
+                <input type="text" id="candidate-name" placeholder="Candidate Name" required>
+                <button type="submit">Add</button>
+            </form>
+        </section>
+        <section id="vote">
+            <h2>Vote for a Candidate</h2>
+            <select id="candidate-select">
+                <option value="">Select Candidate</option>
+            </select>
+            <button id="vote-button" disabled>Vote</button>
+        </section>
+        <section id="candidate-list">
+            <h2>Candidate List</h2>
+            <ul id="candidate-list-ul"></ul>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+    <script src="VotingContract.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
