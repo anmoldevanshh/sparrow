@@ -4,11 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const candidateSelect = document.getElementById('candidate-select');
     const voteButton = document.getElementById('vote-button');
     const candidateListUL = document.getElementById('candidate-list-ul');
+    const connectWalletButton = document.getElementById('connect-wallet-button');
+    const walletAddressDisplay = document.getElementById('wallet-address');
 
-    const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
-    const contractABI = [ /* ABI array from compilation */ ];
-    const contractAddress = '0xYourContractAddress';
-    const votingContract = new web3.eth.Contract(contractABI, contractAddress);
+    let web3;
+    let votingContract;
+    let userAccount;
+
+    async function initWeb3() {
+        if (window.ethereum) {
+            web3 = new Web3(window.ethereum);
+            try {
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+            } catch (error) {
+                console.error("User denied account access");
+            }
+        } else if (window.web3) {
+            web3 = new Web3(window.web3.currentProvider);
+        } else {
+            console.log("Non-Ethereum browser detected. You should consider trying MetaMask!");
+        }
+
+        const contractABI = [ /* ABI array from compilation */ ];
+        const contractAddress = '0xYourContractAddress';
+        votingContract = new web3.eth.Contract(contractABI, contractAddress);
+    }
 
     async function fetchCandidates() {
         const count = await votingContract.methods.candidatesCount().call();
@@ -29,8 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addCandidateForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        await votingContract.methods.addCandidate(candidateNameInput.value).send({ from: accounts[0] });
+        await votingContract.methods.addCandidate(candidateNameInput.value).send({ from: userAccount });
         candidateNameInput.value = '';
         fetchCandidates();
     });
@@ -40,10 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     voteButton.addEventListener('click', async () => {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        await votingContract.methods.vote(candidateSelect.value).send({ from: accounts[0] });
+        await votingContract.methods.vote(candidateSelect.value).send({ from: userAccount });
         fetchCandidates();
     });
 
-    fetchCandidates();
+    connectWalletButton.addEventListener('click', async () => {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        userAccount = accounts[0];
+        walletAddressDisplay.textContent = `Connected wallet: ${userAccount}`;
+        fetchCandidates();
+    });
+
+    initWeb3();
 });
