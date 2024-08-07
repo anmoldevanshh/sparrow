@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const li = document.createElement('li');
             li.textContent = `${candidate[0]} - ${candidate[1]} votes`;
+            li.classList.add('list-group-item');
             candidateListUL.appendChild(li);
         }
     }
