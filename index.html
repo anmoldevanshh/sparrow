@@ -4,34 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decentralized Voting System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Decentralized Voting System</h1>
-        <button id="connect-wallet-button">Connect Wallet</button>
-        <p id="wallet-address"></p>
-    </header>
-    <main>
-        <section id="add-candidate">
-            <h2>Add Candidate</h2>
-            <form id="add-candidate-form">
-                <input type="text" id="candidate-name" placeholder="Candidate Name" required>
-                <button type="submit">Add</button>
-            </form>
-        </section>
-        <section id="vote">
-            <h2>Vote for a Candidate</h2>
-            <select id="candidate-select">
-                <option value="">Select Candidate</option>
-            </select>
-            <button id="vote-button" disabled>Vote</button>
-        </section>
-        <section id="candidate-list">
-            <h2>Candidate List</h2>
-            <ul id="candidate-list-ul"></ul>
-        </section>
-    </main>
+    <div class="container">
+        <header class="text-center my-4">
+            <h1>Decentralized Voting System</h1>
+            <button id="connect-wallet-button" class="btn btn-primary mt-3">Connect Wallet</button>
+            <p id="wallet-address" class="mt-2"></p>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <section id="add-candidate" class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Add Candidate</h2>
+                            <form id="add-candidate-form">
+                                <div class="form-group">
+                                    <input type="text" id="candidate-name" class="form-control" placeholder="Candidate Name" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Add</button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <section id="vote" class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Vote for a Candidate</h2>
+                            <div class="form-group">
+                                <select id="candidate-select" class="form-control">
+                                    <option value="">Select Candidate</option>
+                                </select>
+                            </div>
+                            <button id="vote-button" class="btn btn-primary" disabled>Vote</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <section id="candidate-list" class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Candidate List</h2>
+                    <ul id="candidate-list-ul" class="list-group"></ul>
+                </div>
+            </section>
+        </main>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
     <script src="VotingContract.js"></script>
     <script src="app.js"></script>
