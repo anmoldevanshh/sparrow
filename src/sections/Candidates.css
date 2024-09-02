@@ -1,0 +1,231 @@
+.candidates-section {
+  padding: 60px 20px;
+  background-color: #282828;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candidates-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #61dafb;
+}
+
+.candidate-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 20px; /* Added gap to ensure even spacing */
+}
+
+.candidate-card, .add-candidate-card {
+  height: 320px; /* Original height */
+  background-color: #333;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px;
+  color: #fff;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  outline: none;
+}
+
+.candidate-card:hover, .add-candidate-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.candidate-card:hover .candidate-name, .add-candidate-card:hover .add-candidate-input {
+  color: #61dafb;
+}
+
+.candidate-image {
+  width: 80%;
+  height: 60%; /* Reduced height to make space for the name and 'X' button */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 5px; /* Reduced margin to decrease space between image and name */
+}
+
+.candidate-name {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 5px; /* Reduced margin to move name upwards */
+  margin-bottom: 35px; /* Increased margin to create more space between name and 'X' button */
+}
+
+.add-candidate-input {
+  padding: 10px;
+  width: calc(100% - 20px); /* Adjust to fit inside the card */
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background-color: #222;
+  color: #fff;
+  outline: none; /* Remove default focus outline */
+  transition: border-color 0.3s ease;
+}
+
+.add-candidate-input:focus {
+  border-color: #61dafb;
+}
+
+.add-candidate-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #1a1a1a;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-candidate-button:hover {
+  background-color: #21a1f1;
+  transform: translateY(-2px);
+}
+
+.upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #61dafb;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.upload-icon:hover {
+  background-color: #21a1f1;
+}
+
+.submit-container {
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.submit-button {
+  padding: 15px 30px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #1a1a1a;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #21a1f1;
+  transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+.preview-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%; /* Make it circular */
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #61dafb;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+  pointer-events: auto; /* Ensure pointer events are enabled */
+}
+
+.candidate-card[title], .add-candidate-card[title] {
+  position: relative;
+  cursor: pointer;
+}
+
+.candidate-card[title]::before, .add-candidate-card[title]::before {
+  content: attr(title);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.candidate-card[title]:hover::before, .add-candidate-card[title]:hover::before {
+  opacity: 1;
+}
+
+.error-message {
+  color: #ff5555;
+  font-size: 1rem;
+  margin-top: 15px;
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.remove-candidate-button {
+  position: absolute;
+  bottom: 0; /* Make button flush with bottom */
+  left: 0; /* Align to the left edge */
+  right: 0; /* Align to the right edge */
+  width: 100%; /* Full width to cover the entire footer */
+  padding: 8px; /* Adjust padding to keep the button height comfortable */
+  background-color: #ff5555;
+  color: white;
+  font-size: 1rem; /* Keep font size consistent */
+  border: none;
+  border-radius: 0 0 15px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center; /* Center the button text */
+}
+
+.remove-candidate-button:hover {
+  background-color: #e44e4e;
+}
+
+.submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #61dafb;
+}

@@ -1,0 +1,26 @@
+.about-section {
+  padding: 60px 20px;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.about-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.about-animation {
+  margin-top: 30px;
+  /* Placeholder for blockchain animation */
+  height: 200px;
+  background: url('path/to/animation.gif') center/cover no-repeat; /* Replace with your animation */
+}

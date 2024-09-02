@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+.home {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('src/assets/Back1_upscaledDouble.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Darker overlay for better contrast */
+  z-index: 1;
+  backdrop-filter: blur(4px); /* Add a subtle blur effect */
+}
+
+.home-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 1.5s ease-out; /* Animation effect */
+}
+
+.home-title {
+  font-size: 4rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  animation: fadeIn 1.5s ease-in-out forwards;
+  opacity: 0;
+  color: #F7F7F7; /* A lighter white color for text */
+}
+
+.home-subtitle {
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out 0.5s forwards;
+  color: #f0f0f0;
+}
+
+.home-button {
+  background: linear-gradient(135deg, #21a1f1, #1E90FF);
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 25px; /* More rounded for a modern look */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 3rem;
+  }
+
+  .home-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .home-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}

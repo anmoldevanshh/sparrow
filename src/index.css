@@ -1,0 +1,53 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif; 
+}
+
+body {
+  position: relative;
+  background-image: url('src/assets/Back1_upscaledDouble.jpeg');
+  /* background-color: #1a1a1a;  */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #f0f0f0;
+  line-height: 1.6;
+  scroll-behavior: smooth; 
+}
+
+body::before {
+  content: '';
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.6); /* Darker overlay for better contrast */
+  z-index: -1; /* Places overlay below the content */
+  backdrop-filter: blur(4px); 
+}
+
+/* Styling for links */
+a {
+  text-decoration: none;
+  color: #61dafb; 
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #21a1f1; 
+}
+
+/* Container to limit max width and center content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
