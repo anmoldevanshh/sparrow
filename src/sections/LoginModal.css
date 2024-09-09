@@ -1,0 +1,102 @@
+/* LoginModal.css */
+
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Overlay with similar style to home */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.login-modal-content {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px; /* Slightly larger radius for a softer look */
+  width: 350px; /* Slightly wider for better input visibility */
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow for better contrast */
+  animation: fadeInUp 0.8s ease-out; /* Slightly quicker animation for a modern feel */
+  backdrop-filter: blur(10px); /* Optional: add a blur effect to the modal background */
+}
+
+.login-modal-content h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem; /* Slightly larger title for emphasis */
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #222; /* Darker color for better readability */
+  text-align: center; /* Center the title */
+}
+
+.login-modal-content input {
+  width: calc(100% - 24px); /* Adjust width for padding */
+  padding: 14px;
+  margin: 12px 0;
+  border: 1px solid #ccc; /* Lighter border for subtle styling */
+  border-radius: 6px; /* Larger radius for inputs */
+  font-size: 1rem;
+  outline: none; /* Remove default outline */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+}
+
+.login-modal-content input:focus {
+  border-color: #1E90FF; /* Highlight border on focus */
+  box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.3); /* Add a focus ring */
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #21a1f1, #1E90FF);
+  border: none;
+  padding: 14px;
+  font-size: 1.1rem; /* Slightly larger text for better readability */
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Consistent shadow with home button */
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #1E90FF, #21a1f1);
+  transform: translateY(-5px); /* More pronounced hover effect */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 1.6rem; /* Larger close button for better usability */
+  color: #222; /* Match close button color */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #1E90FF; /* Change color on hover for better interaction feedback */
+}
+
+.toggle-form {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.toggle-form button {
+  background: none;
+  border: none;
+  color: #1E90FF;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.toggle-form button:hover {
+  color: #21a1f1;
+}

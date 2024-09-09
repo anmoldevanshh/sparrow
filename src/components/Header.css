@@ -29,10 +29,6 @@
   transition: transform 0.3s ease;
 }
 
-/* .logo:hover {
-  transform: scale(1.1);
-} */
-
 .logo h2 {
   font-size: 26px;
   color: #61dafb; /* Previous blue color */
@@ -88,6 +84,7 @@
 .right-section {
   display: flex;
   gap: 10px;
+  position: relative;
 }
 
 .connect-btn, .profile-btn {
@@ -103,12 +100,22 @@
   border-radius: 20px;
   font-weight: bold;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.connect-btn.connected {
+  background: rgba(35, 45, 55, 0.8); /* Change background when connected */
 }
 
 .connect-btn:hover, .profile-btn:hover {
   background: rgba(60, 60, 70, 0.8);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.connect-btn:focus, .profile-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(77, 181, 255, 0.5); /* Focus ring for accessibility */
 }
 
 .wallet-icon, .profile-icon {
@@ -128,4 +135,122 @@
 .connect-btn:hover .wallet-icon {
   transform: scale(1.1);
   filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.3));
+}
+
+.wallet-address {
+  font-size: 0.8rem;
+  color: #ffffff;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  z-index: 2000;
+}
+
+.profile-btn:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-text {
+  font-size: 0.9rem;
+}
+
+.connect-btn.connected {
+  background: rgba(60, 60, 70, 0.8);
+}
+
+/* Profile button additional styles */
+.profile-btn {
+  position: relative;
+}
+
+/* Wallet info displayed on profile button hover */
+.wallet-info {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  color: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.profile-btn:hover .wallet-info {
+  display: block;
+}
+
+.wallet-address {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.wallet-status {
+  font-size: 0.9rem;
+  color: #4db5ff;
+}
+
+.connect-btn.connected {
+  background: rgba(60, 60, 70, 0.8);
+}
+
+/* Profile button additional styles */
+.profile-btn {
+  position: relative;
+}
+
+/* Wallet info displayed on profile button hover */
+.wallet-info {
+  display: none;
+  position: absolute;
+  top: 120%; /* Adjust based on button size */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  z-index: 100;
+  max-width: 300px; /* Ensure it doesn't exceed the container width */
+  overflow: hidden; /* Prevent overflow */
+  text-overflow: ellipsis; /* Handle long text */
+}
+
+.profile-btn:hover .wallet-info {
+  display: block;
+}
+
+.wallet-address {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  word-wrap: break-word; /* Wrap long addresses */
+}
+
+.wallet-status {
+  font-size: 0.9rem;
+  color: #4db5ff;
 }
