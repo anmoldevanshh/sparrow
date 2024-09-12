@@ -27,9 +27,9 @@ const Header = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
   const [walletStatus, setWalletStatus] = useState('Disconnected');
+  const [hasError, setHasError] = useState(false); // New state for error handling
 
   useEffect(() => {
-    // Check if wallet is already connected
     const checkWalletConnection = async () => {
       if (window.ethereum) {
         const accounts = await window.ethereum.request({ method: 'eth_accounts' });
@@ -37,6 +37,7 @@ const Header = () => {
           setWalletAddress(accounts[0]);
           setWalletStatus('Connected');
           setIsWalletConnected(true);
+          setHasError(false); // No error when connected
         }
       }
     };
@@ -48,14 +49,21 @@ const Header = () => {
       await disconnectWallet();
       setWalletAddress('');
       setWalletStatus('Disconnected');
+      setIsWalletConnected(false); // Set to false when disconnected
+      setHasError(false); // Reset error on disconnect
     } else {
       const address = await connectWallet();
       if (address) {
         setWalletAddress(address);
         setWalletStatus('Connected');
+        setIsWalletConnected(true); // Set to true only when connection succeeds
+        setHasError(false); // No error when connected
+      } else {
+        setWalletStatus('Disconnected'); // Ensure status stays disconnected on failure
+        setIsWalletConnected(false); // Set to false when connection fails
+        setHasError(true); // Error handling when connection fails
       }
     }
-    setIsWalletConnected(!isWalletConnected);
   };
 
   return (
@@ -74,12 +82,15 @@ const Header = () => {
         </nav>
       </div>
       <div className="right-section">
-        <button className={`connect-btn ${isWalletConnected ? 'connected' : ''}`} onClick={handleWalletClick}>
+        <button 
+          className={`connect-btn ${isWalletConnected ? 'connected' : ''} ${hasError ? 'error' : ''}`} 
+          onClick={handleWalletClick}
+        >
           <img src="src/assets/wallet1.png" alt="Wallet Icon" className="wallet-icon" />
           {isWalletConnected ? 'Wallet Connected' : 'Connect Wallet'}
         </button>
         <button className="profile-btn">
-          <img src='src/assets/profile-icon.png' alt='Profile Icon' className="profile-icon" />
+          <img src="src/assets/profile-icon.png" alt="Profile Icon" className="profile-icon" />
           {isWalletConnected && (
             <div className="wallet-info">
               <span className="wallet-address">{walletAddress}</span>
@@ -93,3 +104,4 @@ const Header = () => {
 };
 
 export default Header;
+
