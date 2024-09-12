@@ -67,6 +67,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - Thanks to the [Ethereum](https://ethereum.org/) and [MetaMask](https://metamask.io/) communities for their support and resources.
-- Shoutout to all the contributors who have worked on this project.
-
-
