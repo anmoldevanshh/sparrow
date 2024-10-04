@@ -1,4 +1,4 @@
-# Sparrow
+# Sparrow (Still in progress)
 
 **Sparrow** is a decentralized voting application designed to leverage blockchain technology for secure, transparent, and immutable voting processes. With Sparrow, elections and decision-making processes are modernized, ensuring trust and reliability in the results.
 
