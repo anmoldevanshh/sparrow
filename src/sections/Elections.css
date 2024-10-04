@@ -1,0 +1,155 @@
+.elections-section {
+  padding: 60px 20px;
+  background-color: #1d1f21;
+  color: #f5f5f5;
+  position: relative;
+}
+
+.elections-title {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: #4db5ff;
+  text-shadow: 0 0 10px rgba(77, 181, 255, 0.3);
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.election-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.election-card {
+  width: 300px;
+  height: 380px;
+  background-color: #2a2d30;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.election-card-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.election-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.election-card:hover .election-image {
+  transform: scale(1.05);
+}
+
+.election-info {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.election-name {
+  font-size: 1.4rem;
+  color: #4db5ff;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.election-dates {
+  margin-bottom: 15px;
+}
+
+.date-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.date-label {
+  color: #888;
+}
+
+.date-value {
+  color: #f5f5f5;
+}
+
+.candidates-preview {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+}
+
+.candidate-preview-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #4db5ff;
+  margin-right: -15px;
+}
+
+.more-candidates {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #4db5ff;
+  color: #1d1f21;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.no-elections {
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  background-color: rgba(77, 181, 255, 0.1);
+  border-radius: 15px;
+  border: 2px dashed #4db5ff;
+}
+
+.no-elections-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.no-elections h3 {
+  font-size: 1.8rem;
+  color: #4db5ff;
+  margin-bottom: 10px;
+}
+
+.no-elections p {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 10px rgba(77, 181, 255, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(77, 181, 255, 0.6);
+  }
+}
+
+@media (max-width: 768px) {
+  .elections-title {
+    font-size: 2rem;
+  }
+
+  .election-card {
+    width: 100%;
+    max-width: 300px;
+  }
+}

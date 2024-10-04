@@ -1,231 +1,390 @@
 .candidates-section {
   padding: 60px 20px;
-  background-color: #282828;
+  background-color: #1d1f21;
+  color: #f5f5f5;
+  position: relative;
+}
+
+.candidates-header {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  position: relative;
+  margin-bottom: 40px;
 }
 
 .candidates-title {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #61dafb;
+  font-size: 2.8rem;
+  color: #4db5ff;
+  text-shadow: 0 0 10px rgba(77, 181, 255, 0.3);
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.close-selection-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #4db5ff;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-selection-button:hover {
+  background-color: rgba(77, 181, 255, 0.1);
+  transform: translateY(-50%) rotate(90deg);
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 10px rgba(77, 181, 255, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(77, 181, 255, 0.6);
+  }
 }
 
 .candidate-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 20px;
-  gap: 20px; /* Added gap to ensure even spacing */
+  gap: 30px;
+  margin-bottom: 40px;
 }
 
 .candidate-card, .add-candidate-card {
-  height: 320px; /* Original height */
-  background-color: #333;
+  width: 250px;
+  height: 320px;
+  background-color: #2a2d30;
   border-radius: 15px;
-  padding: 20px;
-  margin: 15px;
-  color: #fff;
-  width: 200px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.candidate-card-inner {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  outline: none;
-}
-
-.candidate-card:hover, .add-candidate-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.candidate-card:hover .candidate-name, .add-candidate-card:hover .add-candidate-input {
-  color: #61dafb;
 }
 
 .candidate-image {
-  width: 80%;
-  height: 60%; /* Reduced height to make space for the name and 'X' button */
+  width: 100%;
+  height: 240px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 5px; /* Reduced margin to decrease space between image and name */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.candidate-card:hover .candidate-image {
+  transform: scale(1.05);
+}
+
+.candidate-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(42, 45, 48, 0.95), transparent);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .candidate-name {
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 5px; /* Reduced margin to move name upwards */
-  margin-bottom: 35px; /* Increased margin to create more space between name and 'X' button */
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
 }
 
-.add-candidate-input {
-  padding: 10px;
-  width: calc(100% - 20px); /* Adjust to fit inside the card */
-  margin-top: 10px;
-  border-radius: 5px;
-  border: 1px solid #555;
-  background-color: #222;
-  color: #fff;
-  outline: none; /* Remove default focus outline */
-  transition: border-color 0.3s ease;
+.first-name {
+  font-size: 1.4rem;
+  color: #f5f5f5;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.add-candidate-input:focus {
-  border-color: #61dafb;
+.last-name {
+  font-size: 1.1rem;
+  color: #c8c8c8;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.add-candidate-button {
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #61dafb;
+.remove-candidate-button {
+  font-size: 1.5rem;
+  background-color: transparent;
+  color: #ff4d4d;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  color: #1a1a1a;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 5px;
+  line-height: 1;
+  border-radius: 50%;
 }
 
-.add-candidate-button:hover {
-  background-color: #21a1f1;
-  transform: translateY(-2px);
+.remove-candidate-button:hover {
+  background-color: rgba(255, 77, 77, 0.2);
+  transform: rotate(90deg);
+}
+
+.add-candidate-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(77, 181, 255, 0.1);
+  border: 2px dashed #4db5ff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.add-candidate-card:hover {
+  background-color: rgba(77, 181, 255, 0.2);
+  border-color: #3ba0ff;
 }
 
 .upload-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #61dafb;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
-  margin-bottom: 15px;
-  transition: background-color 0.3s ease;
-}
-
-.upload-icon:hover {
-  background-color: #21a1f1;
-}
-
-.submit-container {
-  margin-top: 30px;
-  width: 100%;
-  text-align: center;
-}
-
-.submit-button {
-  padding: 15px 30px;
-  background-color: #61dafb;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #1a1a1a;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.submit-button:hover {
-  background-color: #21a1f1;
-  transform: translateY(-2px);
-}
-
-.submit-button:disabled {
-  background-color: #888;
-  cursor: not-allowed;
-}
-
-.preview-image {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 50%; /* Make it circular */
+  font-size: 4rem;
+  color: #4db5ff;
   margin-bottom: 10px;
   transition: transform 0.3s ease;
 }
 
-.upload-icon {
+.add-candidate-card:hover .upload-icon {
+  transform: rotate(90deg);
+}
+
+.add-candidate-text {
+  color: #4db5ff;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.overlay-content {
+  background: linear-gradient(135deg, #2a2d30, #1d1f21);
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(77, 181, 255, 0.3);
+}
+
+.submit-election-form {
+  background: linear-gradient(135deg, #2a2d30, #1d1f21);
+  border: 1px solid #4db5ff;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: #f5f5f5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
   border-radius: 50%;
-  background-color: #61dafb;
-  color: #fff;
+}
+
+.close-button:hover {
+  color: #4db5ff;
+  background-color: rgba(77, 181, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+.overlay-title {
+  color: #4db5ff;
   font-size: 2rem;
-  cursor: pointer;
-  margin-bottom: 15px;
-  transition: background-color 0.3s ease;
-  pointer-events: auto; /* Ensure pointer events are enabled */
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(77, 181, 255, 0.3);
 }
 
-.candidate-card[title], .add-candidate-card[title] {
-  position: relative;
-  cursor: pointer;
+.form-group {
+  margin-bottom: 25px;
 }
 
-.candidate-card[title]::before, .add-candidate-card[title]::before {
-  content: attr(title);
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.candidate-name-input,
+.election-name-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 2px solid #4db5ff;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #f5f5f5;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.candidate-name-input:focus,
+.election-name-input:focus {
+  outline: none;
+  border-color: #3ba0ff;
+  box-shadow: 0 0 15px rgba(77, 181, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.image-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   pointer-events: none;
 }
 
-.candidate-card[title]:hover::before, .add-candidate-card[title]:hover::before {
-  opacity: 1;
+.image-preview {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #4db5ff;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.image-preview:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(77, 181, 255, 0.3);
+}
+
+.image-upload-text {
+  color: #4db5ff;
+  font-size: 1rem;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.add-candidate-button,
+.submit-election-button {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #4db5ff;
+  color: #1d1f21;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(77, 181, 255, 0.3);
+}
+
+.submit-election-button {
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+.add-candidate-button:hover,
+.submit-election-button:hover {
+  background-color: #3ba0ff;
+  box-shadow: 0 8px 20px rgba(77, 181, 255, 0.4);
 }
 
 .error-message {
-  color: #ff5555;
-  font-size: 1rem;
-  margin-top: 15px;
+  display: none;
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  margin-top: 10px;
   text-align: center;
-  background-color: rgba(255, 0, 0, 0.1);
   padding: 10px;
   border-radius: 5px;
+  background-color: rgba(255, 77, 77, 0.1);
 }
 
-.remove-candidate-button {
-  position: absolute;
-  bottom: 0; /* Make button flush with bottom */
-  left: 0; /* Align to the left edge */
-  right: 0; /* Align to the right edge */
-  width: 100%; /* Full width to cover the entire footer */
-  padding: 8px; /* Adjust padding to keep the button height comfortable */
-  background-color: #ff5555;
-  color: white;
-  font-size: 1rem; /* Keep font size consistent */
-  border: none;
-  border-radius: 0 0 15px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: flex;
-  justify-content: center; /* Center the button text */
+.error-message:not(:empty) {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.remove-candidate-button:hover {
-  background-color: #e44e4e;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.submit-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #61dafb;
+@media (max-width: 768px) {
+  .candidates-title {
+    font-size: 2rem;
+  }
+
+  .close-selection-button {
+    font-size: 1.5rem;
+    width: 30px;
+    height: 30px;
+  }
+
+  .candidate-card,
+  .add-candidate-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .overlay-content {
+    padding: 30px 20px;
+  }
+
+  .candidate-name-input,
+  .election-name-input {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+
+  .image-preview {
+    width: 120px;
+    height: 120px;
+  }
+
+  .add-candidate-button,
+  .submit-election-button {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
 }
