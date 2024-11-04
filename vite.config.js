@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
@@ -10,7 +10,13 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['framer-motion']
+      // Externalize framer-motion to prevent Rollup from bundling it
+      external: ['framer-motion'],
+      output: {
+        globals: {
+          'framer-motion': 'framerMotion'
+        }
+      }
     }
   }
-})
+});
