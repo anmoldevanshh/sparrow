@@ -8,9 +8,9 @@ export default defineConfig({
       overlay: false
     }
   },
+  base: '/', 
   build: {
     rollupOptions: {
-      // Externalize framer-motion to prevent Rollup from bundling it
       external: ['framer-motion'],
       output: {
         globals: {

@@ -13,7 +13,6 @@
   text-shadow: 0 0 10px rgba(77, 181, 255, 0.3);
   animation: titleGlow 2s ease-in-out infinite alternate;
 }
-
 .election-list {
   display: flex;
   flex-wrap: wrap;
@@ -21,7 +20,6 @@
   gap: 30px;
   margin-bottom: 40px;
 }
-
 .election-card {
   width: 300px;
   height: 380px;
