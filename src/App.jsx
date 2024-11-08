@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header.jsx';
 import Home from './sections/Home.jsx';
 import Candidates from './sections/Candidates.jsx';
@@ -7,6 +7,7 @@ import Elections from './sections/Elections.jsx';
 import About from './components/About.jsx';
 import Footer from './components/Footer.jsx';
 import './index.css';
+import backgroundImage from './assets/Back1_upscaledDouble.jpeg';
 
 const App = () => {
     const [isWalletConnected, setIsWalletConnected] = useState(false);
@@ -14,6 +15,10 @@ const App = () => {
     const [ongoingElections, setOngoingElections] = useState([]);
     const [currentElection, setCurrentElection] = useState(null);
     const [selectedElection, setSelectedElection] = useState(null);
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--background-image', `url(${backgroundImage})`);
+    }, []);    
 
     const handleWalletConnection = (status) => {
         setIsWalletConnected(status);

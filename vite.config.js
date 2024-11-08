@@ -8,15 +8,5 @@ export default defineConfig({
       overlay: false
     }
   },
-  base: '/', 
-  build: {
-    rollupOptions: {
-      external: ['framer-motion'],
-      output: {
-        globals: {
-          'framer-motion': 'framerMotion'
-        }
-      }
-    }
-  }
+  base: './', 
 });

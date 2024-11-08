@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
+import logo from '../assets/logo.png';
+import walletIcon from '../assets/wallet1.png';
+import profileIcon from '../assets/profile-icon.png';
 
 // Real wallet connection and disconnection functions
 const connectWallet = async () => {
@@ -18,8 +21,6 @@ const connectWallet = async () => {
 };
 
 const disconnectWallet = () => {
-  // There is no direct way to disconnect MetaMask programmatically
-  // You may want to clear application state instead
   return Promise.resolve();
 };
 
@@ -27,7 +28,7 @@ const Header = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
   const [walletStatus, setWalletStatus] = useState('Disconnected');
-  const [hasError, setHasError] = useState(false); // New state for error handling
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const checkWalletConnection = async () => {
@@ -37,7 +38,7 @@ const Header = () => {
           setWalletAddress(accounts[0]);
           setWalletStatus('Connected');
           setIsWalletConnected(true);
-          setHasError(false); // No error when connected
+          setHasError(false);
         }
       }
     };
@@ -49,19 +50,19 @@ const Header = () => {
       await disconnectWallet();
       setWalletAddress('');
       setWalletStatus('Disconnected');
-      setIsWalletConnected(false); // Set to false when disconnected
-      setHasError(false); // Reset error on disconnect
+      setIsWalletConnected(false);
+      setHasError(false);
     } else {
       const address = await connectWallet();
       if (address) {
         setWalletAddress(address);
         setWalletStatus('Connected');
-        setIsWalletConnected(true); // Set to true only when connection succeeds
-        setHasError(false); // No error when connected
+        setIsWalletConnected(true);
+        setHasError(false);
       } else {
-        setWalletStatus('Disconnected'); // Ensure status stays disconnected on failure
-        setIsWalletConnected(false); // Set to false when connection fails
-        setHasError(true); // Error handling when connection fails
+        setWalletStatus('Disconnected');
+        setIsWalletConnected(false);
+        setHasError(true);
       }
     }
   };
@@ -70,7 +71,7 @@ const Header = () => {
     <header className="header">
       <div className="left-section">
         <a href="#home" className="logo">
-          <img src="src/assets/logo.png" alt="Logo" className="logo-image" />
+          <img src={logo} alt="Logo" className="logo-image" />
           <h2>SparRow</h2>
         </a>
         <nav className="navigation">
@@ -87,11 +88,11 @@ const Header = () => {
           className={`connect-btn ${isWalletConnected ? 'connected' : ''} ${hasError ? 'error' : ''}`} 
           onClick={handleWalletClick}
         >
-          <img src="src/assets/wallet1.png" alt="Wallet Icon" className="wallet-icon" />
+          <img src={walletIcon} alt="Wallet Icon" className="wallet-icon" />
           {isWalletConnected ? 'Wallet Connected' : 'Connect Wallet'}
         </button>
         <button className="profile-btn">
-          <img src="src/assets/profile-icon.png" alt="Profile Icon" className="profile-icon" />
+          <img src={profileIcon} alt="Profile Icon" className="profile-icon" />
           {isWalletConnected && (
             <div className="wallet-info">
               <span className="wallet-address">{walletAddress}</span>
@@ -105,4 +106,3 @@ const Header = () => {
 };
 
 export default Header;
-
