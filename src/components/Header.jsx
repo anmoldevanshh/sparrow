@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 import logo from '../assets/logo.png';
-import walletIcon from '../assets/wallet1.png';
+import walletIcon from '../assets/Wallet1.png';
 import profileIcon from '../assets/profile-icon.png';
 
 // Real wallet connection and disconnection functions
